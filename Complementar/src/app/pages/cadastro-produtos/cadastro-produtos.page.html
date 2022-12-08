@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button routerLink="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>cadastro-produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <div *ngIf="editMode">
+    <form #form="ngForm" [formGroup]="userForm" (submit)="enviar()">
+      <ion-item>
+        <ion-label position="floating">Name:</ion-label>
+        <ion-input [(ngModel)]="name" formControlName="name" simpleMask="xxxxxxxxxxxxxxxxxxxxxxxxxxx" type="text" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Valor:</ion-label>
+        <ion-input [(ngModel)]="value" formControlName="value" simpleMask="999999" type="text" name="value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Quantidade:</ion-label>
+        <ion-input [(ngModel)]="quantity" formControlName="quantity" simpleMask="999999" type="text" name="quantity"></ion-input>
+      </ion-item>
+      
+      <ion-button type="submit"> Cadastrar</ion-button>
+    </form>
+  </div>
+
+  <div *ngIf="!editMode">
+    <ion-list>
+      <ion-item>
+        <ion-label>
+          Nome: {{produto.name}} <br>
+          Valor: R${{produto.value}} <br>
+          Quantidade: {{produto.quantity}} <br>
+          <ion-button (click)="presentAlert()"> Deletar</ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

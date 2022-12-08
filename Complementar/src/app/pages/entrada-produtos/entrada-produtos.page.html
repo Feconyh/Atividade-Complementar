@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button Href=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>entrada-produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-list>
+    <ion-item>
+      <ion-select interface="popover" placeholder="Select Produtos" [(ngModel)]="pro" style="justify-content: center;">
+        <ion-select-option *ngFor="let arrayProduto of arrayProduto" value="{{arrayProduto.quantity}}">{{arrayProduto.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-label>Quantidade: {{pro}}</ion-label>
+  <br>
+  <ion-input [(ngModel)]="quantidade">Nova Quantidade:</ion-input>
+  <ion-button (click)="novo()">Confirmar</ion-button>
+  
+</ion-content>
